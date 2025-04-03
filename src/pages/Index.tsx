@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import KindnessCard from "@/components/KindnessCard";
@@ -8,12 +7,12 @@ import UserStats from "@/components/UserStats";
 import LogKindnessForm from "@/components/LogKindnessForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
 const Index = () => {
   const [showKindnessForm, setShowKindnessForm] = useState(false);
 
-  // Sample data for the components
   const kindnessData = [
     {
       id: "1",
@@ -94,10 +93,8 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-white to-kindness-light/30">
       <Navbar />
 
-      {/* Main content */}
       <main className="container pt-20 pb-24 md:py-20 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Feed - Left column */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-kindness-teal">Kindness Feed</h2>
@@ -110,13 +107,11 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Kindness Chain Visualization */}
             <div className="h-64 mb-6">
               <h3 className="text-lg font-medium mb-2">Your Kindness Chain</h3>
               <KindnessChain data={chainVisualizationData} />
             </div>
             
-            {/* Kindness Cards */}
             <div className="space-y-4">
               {kindnessData.map((kindness) => (
                 <KindnessCard key={kindness.id} {...kindness} />
@@ -124,7 +119,6 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right sidebar */}
           <div className="space-y-6">
             <div className="hidden md:block">
               <Button
@@ -136,13 +130,10 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* User Stats */}
             <UserStats stats={userStats} />
             
-            {/* Kindness Suggestions */}
             <KindnessSuggestions />
             
-            {/* Leaderboard Teaser */}
             <Card className="border-2">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg">Weekly Leaders</CardTitle>
@@ -183,7 +174,6 @@ const Index = () => {
         </div>
       </main>
 
-      {/* Add Kindness Dialog */}
       <Dialog open={showKindnessForm} onOpenChange={setShowKindnessForm}>
         <DialogContent className="sm:max-w-md">
           <LogKindnessForm onClose={() => setShowKindnessForm(false)} />
