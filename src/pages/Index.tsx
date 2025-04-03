@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import KindnessCard from "@/components/KindnessCard";
 import KindnessChain from "@/components/KindnessChain";
@@ -9,10 +9,15 @@ import LogKindnessForm from "@/components/LogKindnessForm";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus } from "lucide-react";
+import { Plus, SparkleIcon } from "lucide-react";
 
 const Index = () => {
   const [showKindnessForm, setShowKindnessForm] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
 
   const kindnessData = [
     {
@@ -94,13 +99,16 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-white to-kindness-light/30">
       <Navbar />
 
-      <main className="container pt-20 pb-24 md:py-20 px-4">
+      <main className={`container pt-20 pb-24 md:py-20 px-4 ${fadeIn ? 'animate-fade-in' : 'opacity-0'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-kindness-teal">Lumina Feed</h2>
+              <div className="flex items-center space-x-2">
+                <SparkleIcon className="w-5 h-5 text-kindness-teal" />
+                <h2 className="text-2xl font-bold text-kindness-teal">Lumina Feed</h2>
+              </div>
               <Button 
-                className="rounded-full bg-kindness-teal hover:bg-kindness-teal/90 md:hidden"
+                className="rounded-full bg-kindness-teal hover:bg-kindness-teal/90 shadow-lg shadow-kindness-teal/20 md:hidden transition-all duration-300"
                 onClick={() => setShowKindnessForm(true)}
               >
                 <Plus className="w-5 h-5 mr-2" />
@@ -108,14 +116,25 @@ const Index = () => {
               </Button>
             </div>
             
-            <div className="h-64 mb-6">
-              <h3 className="text-lg font-medium mb-2">Your Light Chain</h3>
-              <KindnessChain data={chainVisualizationData} />
-            </div>
+            <Card className="border-2 border-kindness-light/80 shadow-xl overflow-hidden">
+              <CardHeader className="pb-2 bg-gradient-to-r from-kindness-light to-kindness-light/50">
+                <CardTitle className="text-lg font-medium">Your Light Chain</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="h-64">
+                  <KindnessChain data={chainVisualizationData} />
+                </div>
+              </CardContent>
+            </Card>
             
-            <div className="space-y-4">
-              {kindnessData.map((kindness) => (
-                <KindnessCard key={kindness.id} {...kindness} />
+            <div className="space-y-5">
+              {kindnessData.map((kindness, index) => (
+                <div key={kindness.id} 
+                  className="transition-all duration-300 hover:translate-y-[-5px]"
+                  style={{animationDelay: `${index * 0.15}s`}}
+                >
+                  <KindnessCard {...kindness} />
+                </div>
               ))}
             </div>
           </div>
@@ -123,7 +142,7 @@ const Index = () => {
           <div className="space-y-6">
             <div className="hidden md:block">
               <Button
-                className="w-full rounded-xl bg-kindness-teal hover:bg-kindness-teal/90 h-12 text-lg"
+                className="w-full rounded-xl bg-kindness-teal hover:bg-kindness-teal/90 h-12 text-lg shadow-lg shadow-kindness-teal/20 transition-all duration-300 hover:scale-105"
                 onClick={() => setShowKindnessForm(true)}
               >
                 <Plus className="w-5 h-5 mr-2" />
@@ -131,45 +150,50 @@ const Index = () => {
               </Button>
             </div>
             
-            <UserStats stats={userStats} />
+            <div className="transition-all duration-300 hover:translate-y-[-5px]">
+              <UserStats stats={userStats} />
+            </div>
             
-            <KindnessSuggestions />
+            <div className="transition-all duration-300 hover:translate-y-[-5px]">
+              <KindnessSuggestions />
+            </div>
             
-            <Card className="border-2">
+            <Card className="border-2 border-kindness-light/80 overflow-hidden shadow-lg transition-all duration-300 hover:translate-y-[-5px]">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg">Weekly Luminaries</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center p-2 bg-kindness-light/50 rounded-md">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-kindness-purple text-white flex items-center justify-center font-bold">
+                      <div className="w-8 h-8 rounded-full bg-kindness-purple text-white flex items-center justify-center font-bold shadow-md">
                         1
                       </div>
-                      <span>Emma J.</span>
+                      <span className="font-medium">Emma J.</span>
                     </div>
-                    <span className="font-medium">12 acts</span>
+                    <span className="font-medium px-3 py-1 bg-white/50 rounded-full text-sm">12 acts</span>
                   </div>
-                  <div className="flex justify-between items-center p-2 rounded-md">
+                  <div className="flex justify-between items-center p-2 rounded-md hover:bg-gray-50/50 transition-colors">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-kindness-orange text-white flex items-center justify-center font-bold">
+                      <div className="w-8 h-8 rounded-full bg-kindness-orange text-white flex items-center justify-center font-bold shadow-md">
                         2
                       </div>
-                      <span>Alex T.</span>
+                      <span className="font-medium">Alex T.</span>
                     </div>
-                    <span className="font-medium">10 acts</span>
+                    <span className="font-medium px-3 py-1 bg-white/50 rounded-full text-sm">10 acts</span>
                   </div>
-                  <div className="flex justify-between items-center p-2 rounded-md">
+                  <div className="flex justify-between items-center p-2 rounded-md hover:bg-gray-50/50 transition-colors">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-kindness-teal text-white flex items-center justify-center font-bold">
+                      <div className="w-8 h-8 rounded-full bg-kindness-teal text-white flex items-center justify-center font-bold shadow-md">
                         3
                       </div>
-                      <span>Sarah W.</span>
+                      <span className="font-medium">Sarah W.</span>
                     </div>
-                    <span className="font-medium">9 acts</span>
+                    <span className="font-medium px-3 py-1 bg-white/50 rounded-full text-sm">9 acts</span>
                   </div>
                 </div>
               </CardContent>
+              <div className="h-1 kindness-gradient"></div>
             </Card>
           </div>
         </div>
