@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import KindnessCard from "@/components/KindnessCard";
@@ -97,18 +98,18 @@ const Index = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-kindness-teal">Kindness Feed</h2>
+              <h2 className="text-2xl font-bold text-kindness-teal">Lumina Feed</h2>
               <Button 
                 className="rounded-full bg-kindness-teal hover:bg-kindness-teal/90 md:hidden"
                 onClick={() => setShowKindnessForm(true)}
               >
                 <Plus className="w-5 h-5 mr-2" />
-                Add Kindness
+                Add Light
               </Button>
             </div>
             
             <div className="h-64 mb-6">
-              <h3 className="text-lg font-medium mb-2">Your Kindness Chain</h3>
+              <h3 className="text-lg font-medium mb-2">Your Light Chain</h3>
               <KindnessChain data={chainVisualizationData} />
             </div>
             
@@ -126,7 +127,7 @@ const Index = () => {
                 onClick={() => setShowKindnessForm(true)}
               >
                 <Plus className="w-5 h-5 mr-2" />
-                Log an Act of Kindness
+                Log a Moment of Light
               </Button>
             </div>
             
@@ -136,7 +137,7 @@ const Index = () => {
             
             <Card className="border-2">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">Weekly Leaders</CardTitle>
+                <CardTitle className="text-lg">Weekly Luminaries</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">

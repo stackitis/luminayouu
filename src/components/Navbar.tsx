@@ -16,7 +16,7 @@ const Navbar = () => {
             <Heart className="relative z-10 w-8 h-8 text-white" fill="white" />
           </div>
           <h1 className="text-xl font-bold bg-clip-text text-transparent kindness-gradient">
-            Kindness Chain
+            Lumina
           </h1>
         </div>
 
