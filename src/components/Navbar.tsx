@@ -9,6 +9,7 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = useState(() => {
     const path = location.pathname;
     if (path === "/") return "feed";
+    if (path === "/network") return "network";
     if (path === "/achievements") return "achievements";
     return "feed"; // default
   });
@@ -39,14 +40,16 @@ const Navbar = () => {
               Feed
             </Button>
           </Link>
-          <Button 
-            variant={activeTab === "network" ? "default" : "ghost"} 
-            onClick={() => setActiveTab("network")}
-            className="rounded-full"
-          >
-            <Users className="w-4 h-4 mr-2" />
-            Network
-          </Button>
+          <Link to="/network">
+            <Button 
+              variant={activeTab === "network" ? "default" : "ghost"} 
+              onClick={() => setActiveTab("network")}
+              className="rounded-full"
+            >
+              <Users className="w-4 h-4 mr-2" />
+              Network
+            </Button>
+          </Link>
           <Button 
             variant={activeTab === "map" ? "default" : "ghost"} 
             onClick={() => setActiveTab("map")}
@@ -88,9 +91,11 @@ const Navbar = () => {
             <Heart className="w-5 h-5" />
           </Button>
         </Link>
-        <Button variant={activeTab === "network" ? "default" : "ghost"} onClick={() => setActiveTab("network")} className="flex-1">
-          <Users className="w-5 h-5" />
-        </Button>
+        <Link to="/network">
+          <Button variant={activeTab === "network" ? "default" : "ghost"} onClick={() => setActiveTab("network")} className="flex-1">
+            <Users className="w-5 h-5" />
+          </Button>
+        </Link>
         <Button variant="outline" onClick={() => {}} className="flex-1 rounded-full bg-kindness-teal text-white border-none">
           <Plus className="w-6 h-6" />
         </Button>

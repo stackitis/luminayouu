@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import KindnessCard from "@/components/KindnessCard";
@@ -6,7 +5,6 @@ import KindnessChain from "@/components/KindnessChain";
 import KindnessSuggestions from "@/components/KindnessSuggestions";
 import UserStats from "@/components/UserStats";
 import LogKindnessForm from "@/components/LogKindnessForm";
-import KindnessChatbot from "@/components/KindnessChatbot";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -199,9 +197,6 @@ const Index = () => {
           </div>
         </div>
       </main>
-
-      {/* Add KindnessChatbot here */}
-      <KindnessChatbot />
 
       <Dialog open={showKindnessForm} onOpenChange={setShowKindnessForm}>
         <DialogContent className="sm:max-w-md">
