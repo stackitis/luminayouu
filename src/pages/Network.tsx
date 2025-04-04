@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import KindnessChatbot from "@/components/KindnessChatbot";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Network as NetworkIcon, Users, UserPlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Network as NetworkIcon, Users, UserPlus, Plus } from "lucide-react";
 
 const Network = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -126,6 +127,15 @@ const Network = () => {
                     <span className="font-bold text-lg">137</span>
                   </div>
                   <div className="h-1 kindness-gradient mt-4 mb-2"></div>
+                  
+                  {/* Add New Network button */}
+                  <Button 
+                    className="w-full mt-2 bg-kindness-teal hover:bg-kindness-teal/90 text-white flex items-center justify-center gap-2"
+                    variant="default"
+                  >
+                    <Plus className="w-4 h-4" />
+                    Add New Network
+                  </Button>
                 </div>
               </CardContent>
             </Card>
