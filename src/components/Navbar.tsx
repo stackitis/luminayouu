@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, MapPin, Award, Plus } from "lucide-react";
+import { Heart, Users, MapPin, Award, Plus, LogIn } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
@@ -67,17 +67,16 @@ const Navbar = () => {
           </Link>
         </nav>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
+          <Link to="/sign-in">
+            <Button variant="outline" className="rounded-full">
+              <LogIn className="w-4 h-4 mr-2" /> 
+              Sign In
+            </Button>
+          </Link>
           <Button className="rounded-full bg-kindness-teal hover:bg-kindness-teal/90">
             <Plus className="w-5 h-5 mr-2" />
             Add Light
-          </Button>
-          <Button variant="ghost" className="rounded-full ml-2 md:ml-4">
-            <Link to="/achievements">
-              <div className="w-8 h-8 rounded-full bg-kindness-purple text-white flex items-center justify-center">
-                JD
-              </div>
-            </Link>
           </Button>
         </div>
       </div>
