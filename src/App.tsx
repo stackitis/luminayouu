@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Network from "./pages/Network";
 import Achievements from "./pages/Achievements";
 import SignIn from "./pages/SignIn";
+import Map from "./pages/Map";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/network" element={<Network />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/sign-in" element={<SignIn />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

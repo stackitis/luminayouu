@@ -10,6 +10,7 @@ const Navbar = () => {
     const path = location.pathname;
     if (path === "/") return "feed";
     if (path === "/network") return "network";
+    if (path === "/map") return "map";
     if (path === "/achievements") return "achievements";
     return "feed"; // default
   });
@@ -50,14 +51,16 @@ const Navbar = () => {
               Network
             </Button>
           </Link>
-          <Button 
-            variant={activeTab === "map" ? "default" : "ghost"} 
-            onClick={() => setActiveTab("map")}
-            className="rounded-full"
-          >
-            <MapPin className="w-4 h-4 mr-2" />
-            Map
-          </Button>
+          <Link to="/map">
+            <Button 
+              variant={activeTab === "map" ? "default" : "ghost"} 
+              onClick={() => setActiveTab("map")}
+              className="rounded-full"
+            >
+              <MapPin className="w-4 h-4 mr-2" />
+              Map
+            </Button>
+          </Link>
           <Link to="/achievements">
             <Button 
               variant={activeTab === "achievements" ? "default" : "ghost"} 
@@ -99,9 +102,11 @@ const Navbar = () => {
         <Button variant="outline" onClick={() => {}} className="flex-1 rounded-full bg-kindness-teal text-white border-none">
           <Plus className="w-6 h-6" />
         </Button>
-        <Button variant={activeTab === "map" ? "default" : "ghost"} onClick={() => setActiveTab("map")} className="flex-1">
-          <MapPin className="w-5 h-5" />
-        </Button>
+        <Link to="/map">
+          <Button variant={activeTab === "map" ? "default" : "ghost"} onClick={() => setActiveTab("map")} className="flex-1">
+            <MapPin className="w-5 h-5" />
+          </Button>
+        </Link>
         <Link to="/achievements">
           <Button variant={activeTab === "achievements" ? "default" : "ghost"} onClick={() => setActiveTab("achievements")} className="flex-1">
             <Award className="w-5 h-5" />
